@@ -1,20 +1,19 @@
-package com.example.and01_helloandroid;
+package com.example.and02_intolayoutconst;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
+import android.text.Layout;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        String str = new String(); // ctrl + p
-        //코드 자동 완성 :  alt + insert, 마우스 오른쪽 클릭 -> 자동완성(Generate)
-
+        //setContentView(R.layout.activity_main);
 
 
     }
