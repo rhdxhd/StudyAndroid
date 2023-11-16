@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="app_main_color">#FFC107</color>
+    <color name="add_btn_common">#00BCD4</color>
 </resources>
