@@ -36,20 +36,21 @@ public class MainActivity extends AppCompatActivity {
             Log.d("scroll위치", "getScrollY" + scroll_v.getScrollY());
             Log.d("scroll위치", "getScrollX" + scroll_h.getScrollX());
             //scroll_v.scrollTo(0, 100);
-            scroll_v.scrollTo((0, scroll_v.getScrollY() + 100 );
-            scroll_h.smoothScrollTo(scroll_h.getScrollX() + 100, 0 );
+            scroll_v.scrollTo(0, scroll_v.getScrollY() +100);
+            scroll_h.smoothScrollTo(scroll_h.getScrollX()+100 , 0);
 
         });
 
 
 
-
+        //ScrollView (<- Vertical)
 
 
 
         tv_text.setText("글자"); //기존 글자를 현재 파라메터의 String으로 바꿈
         //append속성을 이용해서 글자가 화면에 잘리게 작업을 해보기
         //반복을 해야겠다 -> java에서 어떤 문법을 써야겠다 -> for문 써야겠다 or while
+
         for(int i=0; i<50; i++) {
             for(int j=0; j<30; j++) {
                 tv_text.append("가로가로");
