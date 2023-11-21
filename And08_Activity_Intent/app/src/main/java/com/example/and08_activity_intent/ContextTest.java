@@ -1,12 +1,10 @@
 package com.example.and08_activity_intent;
 
-import android.widget.TextView;
+import android.content.Context;
+import android.widget.Toast;
 
 public class ContextTest {
-
-    TextView tv_join;
-
-
-
-
+    public void method(Context context){
+        Toast.makeText(context, "나는 컨텍스트", Toast.LENGTH_SHORT).show();
+    }
 }

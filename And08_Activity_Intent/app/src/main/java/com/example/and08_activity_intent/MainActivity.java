@@ -6,20 +6,17 @@ import android.os.Bundle;
 import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
-    //현재는 onCreat메소드에서 대부분의 코드를 처리해도 무방함
-    // 추후에 여러 화면 또는 Spring연동 시 새로고침 등의 처리가 필요하다면 수명주기가 있다는 사실을 인지하고 사용하면 됩.
+    //현재는 onCreate메소드에서 대부분의 코드를 처리해도 무방함.
+    //추후에 여러 화면 또는 Spring연동 시 새로고침의 등의 처리가 필요하다면 수명주기가 있다는 사실을 인지하고 사용하면 됨.
 
-    //Spring(jsp..) 모든 개발 툴에서는 디버깅 모드가 제공이 됨 -> 이것을 활용하면 프로그램의 전체 구조를 빠르게 파악하거나 오류 수정이 수월함.
-
-
-    private final String Tag = "액티비티 수명주기";
+    //Spring(jsp..) 모든 개발 툴에서는 디버깅 모드가 제공이 됨.-> 이것을 활용하면 프로그램의 전체 구조를 빠르게 파악하거나 오류 수정이 수월함.
+    private final String TAG = "액티비티 수명주기";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: ");
-
     }
 
     @Override
@@ -27,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         Log.d(TAG, "onStart: ");
     }
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -46,13 +42,11 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onPause: ");
     }
 
-
     @Override
     protected void onStop() {
         super.onStop();
         Log.d(TAG, "onStop: ");
     }
-
 
     @Override
     protected void onDestroy() {
