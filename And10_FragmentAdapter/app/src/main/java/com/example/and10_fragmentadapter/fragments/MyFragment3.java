@@ -12,28 +12,20 @@ import android.widget.TextView;
 
 import com.example.and10_fragmentadapter.R;
 
-import org.w3c.dom.Text;
-
-
 public class MyFragment3 extends Fragment {
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view =  inflater.inflate(R.layout.fragment_my3, container, false);
         Button btn_3 = view.findViewById(R.id.btn_3);
-        TextView tv = view.findViewById(tv);
-
-        return view;
+        TextView tv = view.findViewById(R.id.tv);
 
         btn_3.setOnClickListener(v -> {
             tv.setText("버튼눌림");
         });
 
 
-
-
+        return view;
     }
 }
