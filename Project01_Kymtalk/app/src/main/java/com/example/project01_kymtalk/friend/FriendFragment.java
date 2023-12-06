@@ -11,14 +11,13 @@ import android.view.ViewGroup;
 import com.example.project01_kymtalk.R;
 import com.example.project01_kymtalk.databinding.FragmentFriendBinding;
 
-
 public class FriendFragment extends Fragment {
     FragmentFriendBinding binding;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentFriendBinding.inflate((inflater , container, false);
+        binding = FragmentFriendBinding.inflate(inflater , container , false);
+
 
         return binding.getRoot();
     }
