@@ -17,6 +17,7 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
     <style name="friend_name_textview_black_left"  parent="friend_name_textview_black">
+        <item name="android:textSize">20dp</item>
         <item name="android:layout_gravity">left</item>
     </style>
 

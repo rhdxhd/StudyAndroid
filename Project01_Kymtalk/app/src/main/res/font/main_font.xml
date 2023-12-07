@@ -12,12 +12,12 @@
     -->
     <font
         android:fontStyle="normal"
-        android:font="@font/dongle_regular"
+        android:font="@font/gothica1_regular"
         android:fontWeight="400"/>
 
     <font
         android:fontStyle="normal"
-        android:font="@font/dongle_bold"
+        android:font="@font/gothica1_semibold"
         android:fontWeight="700"/>
 
 
