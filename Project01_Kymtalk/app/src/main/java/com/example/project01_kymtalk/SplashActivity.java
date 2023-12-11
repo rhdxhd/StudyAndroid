@@ -22,7 +22,7 @@ public class SplashActivity extends AppCompatActivity {
 
         //ProgressDiaog : 로딩중에 사용자가 어떤 동작을 하고있는지 인지를 못하는 경우 프로그램을 오류나 , 버그로 의심을 하고 기다림을 멈춤 -> 조작
         //조작(x) -> 앱은 로딩중이다(O)
-        ProgressDialog dialog = new ProgressDialog(this);
+        ProgressDialog dialog = new ProgressDialog(this); // 뱅글뱅글 로딩중이라고 도는거
         dialog.setTitle("Hi Talk");
         dialog.setMessage("로딩중 대기 바랍니다..");
         dialog.setCancelable(false);//다이얼로그를 취소하지 못하게 처리.
