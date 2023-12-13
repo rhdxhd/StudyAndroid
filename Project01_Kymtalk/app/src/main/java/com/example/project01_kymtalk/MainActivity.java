@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
                 changeFragment(new ChatFragment());
             }else if(item.getItemId() == R.id.tab3){
                 changeFragment(new OpenTalkMainFragment());
-
             }else if(item.getItemId() == R.id.tab4){
 
             }else if(item.getItemId() == R.id.tab5){
