@@ -21,12 +21,21 @@ public class CommonConn {
     private HashMap<String,Object> paramMap;
     private ProgressDialog dialog;
     private Context context;//Toast , 다이얼로그 같은 경우 화면 위에 나와야함( 현재 화면이 어떤상태인지,무엇인지...Context)
+    private MethodType method;
 
     public CommonConn(Context context , String url) {
         this.url = url;
         this.context = context;
         this.paramMap = new HashMap<>();
+        this.method = MethodType.POST;
     }
+
+    public CommonConn setMethodType(MethodType type){
+        this.method = type;
+        return this;
+    }
+
+
 
     public CommonConn addParamMap(String key , Object value){
         if(key == null) return this;//key에 Nullt삽입을 막음.
@@ -50,26 +59,53 @@ public class CommonConn {
     public void onExcute(KymCallBack callBack){
         onPreExcute();
         CommonService service = CommonRetClient.getApiClient().create(CommonService.class);
-        service.clientPostMethod(url , paramMap).enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                Log.d(TAG, "onResponse: " + response.body());
-                Log.d(TAG, "onResponse: " + response.errorBody());
-                if(response.errorBody() == null){
-                    //옵저버 패턴 순서 3:호출->MainActivity new in....(onResult)
-                    callBack.onResult(true, response.body());
-                }else{
-                    callBack.onResult(false, response.body());
+
+
+        if(method == MethodType.POST){
+            service.clientPostMethod(url , paramMap).enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    //Log.i(TAG, "onResponse: " + response.body());
+                    //Log.i(TAG, "onResponse: " + response.errorBody());
+                    if(response.errorBody() == null){
+                        //옵저버 패턴 순서 3:호출->MainActivity new in....(onResult)
+                        callBack.onResult(true, response.body());
+                    }else{
+                        callBack.onResult(false, response.body());
+                    }
+
                 }
 
-            }
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Log.d(TAG, "onFailure: " + t.getMessage());
+                    callBack.onResult(false , t.getMessage());
+                }
+            });
+        }else{
+            service.clientGetMethod(url , paramMap).enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    //  Log.d(TAG, "onResponse: " + response.body());
+                    // Log.d(TAG, "onResponse: " + response.errorBody());
+                    if(response.errorBody() == null){
+                        //옵저버 패턴 순서 3:호출->MainActivity new in....(onResult)
+                        callBack.onResult(true, response.body());
+                    }else{
+                        callBack.onResult(false, response.body());
+                    }
 
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
-                callBack.onResult(false , t.getMessage());
-            }
-        });
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Log.d(TAG, "onFailure: " + t.getMessage());
+                    callBack.onResult(false , t.getMessage());
+                }
+            });
+
+        }
+
 
         onPostExcute();
     }
@@ -82,8 +118,13 @@ public class CommonConn {
 
 
 
+    public enum MethodType{
+        GET,
+        POST
+    }
 
     //옵저버 패턴의 순서 1. 응답을 위한 메소드를 가진 인터페이스를 하나 만든다.
+    @FunctionalInterface
     public interface KymCallBack{
         public void onResult(boolean isResult , String data); // MainActivity에서 new로 생성 후 -> CommonConn. - onResult().
     }

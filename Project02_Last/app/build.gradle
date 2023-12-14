@@ -59,4 +59,14 @@ dependencies {
     implementation group: 'com.github.bumptech.glide', name: 'glide', version: '4.13.2'
 
 
+    // naver login API
+    implementation 'com.navercorp.nid:oauth:5.9.0' // jdk 11
+
+    // Kakao Login APi
+    implementation "com.kakao.sdk:v2-user:2.18.0" // 카카오 로그인
+
+    //
+    implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
+
+
 }

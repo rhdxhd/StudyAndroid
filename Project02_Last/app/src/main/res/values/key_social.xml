@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="NATIVE_APP_KEY">kakao6b31da7eff82c2b2b197a964fbc79efe</string>
+    <string name="CLIENT_ID_NAVER">M_dhrYXByurd_DdaPllM</string>
+    <string name="CLIENT_SECRET_NAVER">sJmYoJQ9gc</string>
+    <string name="CLIENT_NAME_NAVER">Project02_Last</string>
+
+</resources>
