@@ -1,5 +1,7 @@
 package com.example.project02_last.file;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -7,10 +9,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
@@ -18,16 +23,34 @@ import android.util.Log;
 
 import com.bumptech.glide.Glide;
 import com.example.project02_last.R;
+import com.example.project02_last.common.CommonConn;
+import com.example.project02_last.common.CommonRetClient;
+import com.example.project02_last.common.CommonService;
 import com.example.project02_last.databinding.ActivityFileBinding;
+
+import java.io.File;
+import java.util.HashMap;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FileActivity extends AppCompatActivity {
     ActivityFileBinding binding;
+    ActivityResultLauncher<Intent> launcher; //<= onCreate메소드에서 초기화하면 오류 발생.
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityFileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         checkPermission();
+        //캐싱되어있는 이미지를 삭제함 -> 나중에 이미지가 많으면 새로 로딩을 다시 하기 때문에 느려질 가능성 있음.
+        //new ClearCacheTask(this).execute();
+        Glide.with(this).load("http://192.168.0.22/mid/file/test.jpg").into(binding.imgv);
 
         binding.imgv.setOnClickListener(v->{
             //여러 화면에서 재활용이 필요하다면 바뀌어야 할 부분들을 전부 파라메터로 빼고 , 메소드 형태로 바꿔주면 편함.
@@ -39,7 +62,7 @@ public class FileActivity extends AppCompatActivity {
                 if(dialog_item[i].equals("갤러리")){
                     showGallery();
                 }else if(dialog_item[i].equals("카메라")){
-
+                    showCamera();
                 }
                 dialog.dismiss();//아이템 선택 후 안보이게 처리
             });
@@ -48,6 +71,49 @@ public class FileActivity extends AppCompatActivity {
 
         });
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            Glide.with(FileActivity.this).load(cameraUri).into(binding.imgv);
+            File cameraFile = new File(getRealPath(cameraUri));
+            //MultiPart 형태로 전송 (File)
+            //재사용이 필요하다면 CommonConn부분에 넣어주는것도가능함.(추후)  // mimeType 어떤 형태의 데이터 확장자나타입인지 명시
+            RequestBody file = RequestBody.create(MediaType.parse("image/jpeg") , cameraFile);
+            MultipartBody.Part filePart = MultipartBody.Part.createFormData("andFile" , "test.jpg" , file);//name:Servlet 구분자 , 실제 파일명, 실제 파일
+            CommonService service = CommonRetClient.getApiClient().create(CommonService.class);
+            service.clientSendFile(" file.f" , new HashMap<>() , filePart).enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+
+                }
+            });
+        });
+
+    }
+
+    //이전 까지 많이 사용되던 비동기 작업 (백그라운드)
+    class ClearCacheTask extends AsyncTask<Void, Void, Void>{
+        private Context context;
+
+        public ClearCacheTask(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            Glide.get(context).clearDiskCache();
+            //Glide.get(context).clearMemory();
+            return null;
+        }
+    }
+
 
     //os를 통해서 갤러리의 액티비티를 띄움. ( 사용자가 선택 -> 결과를 받아옴 )
     //Intent를 이용한 화면 전환 : 명시적(Activity->Activity) , 묵시적(암시적) (Activity->Action(Activity)
@@ -60,8 +126,19 @@ public class FileActivity extends AppCompatActivity {
         //startActivity(intent);//단순 실행 -> 결과를 알 수 없음.(사진 선택 , 뒤로 가기 , 대기)
         //1.startActivityForResult == Legacy : 1.RequestCode(어떤 요청) , 2.onActivityResult라는 메소드를 재정의
         startActivityForResult(intent,GALLERY_REQ);
-        //2.ActivityLauncher <- 최근
+
     }
+
+    Uri cameraUri = null;
+    //2.ActivityLauncher <- 최근
+    public void showCamera(){
+        //카메라로 사용자가 사진을 찍으면 우리가 미리 임시로 만들어둔 URI에 카메라 사진을 외부 저장소에 저장 후 알려줌.
+        cameraUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI , new ContentValues());
+        Intent camaraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        camaraIntent.putExtra(MediaStore.EXTRA_OUTPUT , cameraUri);
+        launcher.launch(camaraIntent);
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -75,7 +152,25 @@ public class FileActivity extends AppCompatActivity {
             //onActivityResult: /-1/1/content://media/external/images/media/36/ORIGINAL/NONE/image/jpeg/1452801664
             //c:fakedirectoy
             Glide.with(this).load(data.getData()).into(binding.imgv);//불러온 이미지를 이미지뷰에 붙일수있는지?
-            getRealPath(data.getData());
+            // getRealPath(data.getData());
+            String filePath = getRealPath(data.getData());
+            //MultiPart 형태로 전송 (File)
+            //재사용이 필요하다면 CommonConn부분에 넣어주는것도가능함.(추후)  // mimeType 어떤 형태의 데이터 확장자나타입인지 명시
+            RequestBody file = RequestBody.create(MediaType.parse("image/jpeg") , new File(filePath));
+            MultipartBody.Part filePart = MultipartBody.Part.createFormData("andFile" , "test.jpg" , file);//name:Servlet 구분자 , 실제 파일명, 실제 파일
+            CommonService service = CommonRetClient.getApiClient().create(CommonService.class);
+            service.clientSendFile(" file.f" , new HashMap<>() , filePart).enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+
+                }
+            });
+
         }else if(requestCode == CAMARE_REQ){
 
         }
