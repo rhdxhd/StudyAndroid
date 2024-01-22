@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/round_corner"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:layout_marginTop="10dp">
+    <ImageView
+        android:id="@+id/imgv"
+        android:src="@drawable/ic_launcher_foreground"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"/>
+    <TextView
+        android:id="@+id/account_name"
+        android:layout_toRightOf="@+id/imgv"
+        android:layout_marginTop="10dp"
+        android:text="U드림 저축예금 (인터넷 전용)"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_toRightOf="@+id/imgv"
+        android:layout_below="@id/account_name"
+        android:layout_marginTop="10dp"
+        android:text="신한 000-000-0000"
+        android:textSize="12dp"
+        android:textColor="#7E7E7E"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/btn_nav"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/round_corner_bottom_only"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/ready_1"
+            android:text="입금"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+    <TextView
+        android:text="0원"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_margin="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_above="@id/btn_nav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_tab1"
+        android:title="홈"
+        android:icon="@drawable/btm_nav_home"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/nav_tab2"
+        android:title="자산관리"
+        android:icon="@drawable/btm_nav_moneyverse"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/nav_tab3"
+        android:title="상품"
+        android:icon="@drawable/btm_nav_product"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/nav_tab4"
+        android:title="혜택"
+        android:icon="@drawable/btm_nav_prize"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/nav_tab5"
+        android:title="전체메뉴"
+        android:icon="@drawable/btm_nav_all"
+        app:showAsAction="ifRoom"/>
+</menu>

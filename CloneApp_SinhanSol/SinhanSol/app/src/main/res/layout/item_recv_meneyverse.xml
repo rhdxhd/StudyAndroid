@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/round_corner"
+    android:id="@+id/box"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:text="총자산"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/ready_1"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:id="@+id/tv_subtitle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:text="지금 내 자산은?"
+            android:textSize="22dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_context"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/tv_subtitle"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:text="카드, 증권, 포인트, 자동차, 부동산,\n휴대폰까지 내 자산으로 관리"
+            android:textColor="#6A6A6A"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:id="@+id/imgv"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_height="100dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="100dp"
+            android:src="@drawable/ic_launcher_foreground" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_btn"
+        android:background="@drawable/round_corner"
+        android:gravity="center"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:text="자산증감현환"
+        android:textSize="18dp" />
+</LinearLayout>

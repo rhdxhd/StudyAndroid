@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:id="@+id/ready_1">
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/title"
+            android:textColor="@color/blue"
+            android:textStyle="bold"
+            android:textSize="22dp"
+            android:text="콘텐츠 소액투자"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tv_1"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="22dp"
+            android:text="K-콘텐츠"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textSize="22dp"
+            android:text="새롭게 즐기기"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/imgv"
+        android:src="@drawable/ic_launcher_foreground"
+        android:layout_width="130dp"
+        android:layout_height="130dp"/>
+
+</LinearLayout>

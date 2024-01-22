@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".transfer.TransferPhoneBookFragment"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgv"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_launcher_foreground" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/imgv"
+            android:layout_centerHorizontal="true"
+            android:text="등록된 친구가 없어요"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_below="@id/imgv"
+            android:layout_marginTop="40dp"
+            android:text="휴대폰 연락처를 불러와"
+            android:textSize="12dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_below="@id/imgv"
+            android:layout_marginTop="60dp"
+            android:layout_centerHorizontal="true"
+            android:text="이체할 수 있어요."
+            android:textSize="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/ready_1"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/imgv"
+            android:layout_marginTop="100dp"
+            android:gravity="center"
+            android:background="@drawable/round_corner_blue_border"
+            android:text="내 연락처 불러오기"
+            android:textColor="#0078DB"
+            android:layout_width="150dp"
+            android:layout_height="40dp"/>
+    </RelativeLayout>
+
+</LinearLayout>

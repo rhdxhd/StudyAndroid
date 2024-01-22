@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".benefits.BenefitsFragment"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:padding="10dp">
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_nav"
+            app:tabIndicatorColor="@color/black"
+            app:tabTextColor="@color/black"
+            app:tabTextAppearance="@style/tab_btn_text_selected"
+            app:tabMinWidth="80dp"
+            android:background="@color/white"
+            app:tabSelectedTextAppearance="@style/tab_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <com.google.android.material.tabs.TabItem
+                android:text="추천"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <com.google.android.material.tabs.TabItem
+
+                android:text="라이프"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.tabs.TabLayout>
+        <View
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+        <LinearLayout
+            android:id="@+id/ready_1"
+            android:background="@drawable/round_corner_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:layout_gravity="center_vertical">
+            <ImageView
+                android:layout_gravity="center_vertical"
+                app:tint="@color/blue"
+                android:src="@drawable/ic_plus"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_margin="5dp"/>
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/blue"
+                android:text="메뉴 더보기"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+</LinearLayout>

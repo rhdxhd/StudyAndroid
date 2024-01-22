@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="box">
+        <item name="android:background">@drawable/round_corner</item>
+        <item name="android:elevation">10dp</item>
+        <item name="android:padding">10dp</item>
+    </style>
+    <style name="gray_view_line1dp_vertical">
+        <item name="android:background">#BFBFBF</item>
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">40dp</item>
+        <item name="android:layout_marginBottom">40dp</item>
+    </style>
+    <style name="tab_text" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+    <style name="tab_text1" parent="TextAppearance.Design.Tab">
+        <item name="iconSize">40dp</item>
+
+    </style>
+    <style name="tab_btn_text" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">17dp</item>
+
+    </style>
+    <style name="tab_btn_text_selected" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">17dp</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+    <style name="gray_view_line1dp_horizontal">
+        <item name="android:background">#BFBFBF</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginLeft">7dp</item>
+        <item name="android:layout_marginRight">7dp</item>
+    </style>
+
+
+
+</resources>

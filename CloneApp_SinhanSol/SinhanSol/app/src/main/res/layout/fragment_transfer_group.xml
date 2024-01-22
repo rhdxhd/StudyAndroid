@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".transfer.TransferGroupFragment"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="친구"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/ready_1"
+            android:text="그룹"
+            android:textColor="@color/black"
+            android:backgroundTint="#EEEEEE"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:minHeight="0dp"
+            android:padding="0dp"
+            android:minWidth="0dp"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+        <ImageView
+            android:id="@+id/imgv"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ic_launcher_foreground" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/imgv"
+            android:layout_centerHorizontal="true"
+            android:text="등록된 친구가 없어요"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_below="@id/imgv"
+            android:layout_marginTop="40dp"
+            android:text="자주 보내는 계좌를 등록해"
+            android:textSize="12dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_below="@id/imgv"
+            android:layout_marginTop="60dp"
+            android:layout_centerHorizontal="true"
+            android:text="간편하게 이체할 수 있어요."
+            android:textSize="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="#F2F6FC" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="최근보낸 사람"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/ready_2"
+            android:text="관리"
+            android:textColor="@color/black"
+            android:backgroundTint="#EEEEEE"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:minHeight="0dp"
+            android:padding="0dp"
+            android:minWidth="0dp"/>
+    </LinearLayout>
+
+
+</LinearLayout>
